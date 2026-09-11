@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="P7PSwLDpvlLMpdiFt7Vu2Y" LanguageVersion="2025.7.4" Version="0.128">
+  <NugetDependency Id="BC1xD1FDR6lO8uamqZQgaL" Location="VL.CoreLib" Version="2025.7.4" />
+  <Patch Id="VIza5SUsmT6MXqrLNsK7nL">
+    <Canvas Id="JXGm9JXRJU8MzwwXyjRvN6" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="Q86ovLdrLA9LBSQ3BufN6A">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="A61f5Kpp3wANV7k39bWRPz">
+        <Canvas Id="QyVGkFta7c1LcLmx92ZCM8" CanvasType="Group" />
+        <Patch Id="CorV471gOCpLuNyWi6UboR" Name="Create" />
+        <Patch Id="TBS7YPooFaGPI54o7vrtsc" Name="Update" />
+        <ProcessDefinition Id="K6zdovN8zxQMqSdCqC9Tgf">
+          <Fragment Id="UNBkc93tKj5OzDe6idf1xu" Patch="CorV471gOCpLuNyWi6UboR" Enabled="true" />
+          <Fragment Id="ERcZMmuBdFHLPifps0JfGS" Patch="TBS7YPooFaGPI54o7vrtsc" Enabled="true" />
+        </ProcessDefinition>
+      </Patch>
+    </Node>
+  </Patch>
+  <PlatformDependency Id="Pa8ZLk32BHOL5XOiQVzMMA" Location="./lib/Debug/net8.0/VL.Redux.dll" IsForward="true" />
+</Document>

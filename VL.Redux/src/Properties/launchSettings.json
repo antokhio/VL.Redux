@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "dev/antokhio": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\vvvv\\vvvv_gamma_7.4-win-x64\\vvvv.exe",
+      "commandLineArgs": "--nuget-path \"..\\..\\..\\__nugets\" ^\r\n--package-repositories \"..\\..\"; ^\r\n--editable-packages VL.Redux*;",
+      "workingDirectory": "$(ProjectDir)"
+    }
+  }
+}
