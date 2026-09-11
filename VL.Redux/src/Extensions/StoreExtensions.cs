@@ -6,7 +6,7 @@ namespace VL.Redux
     public static class StoreExtensions
     {
         [Name("Select (Stateless)")]
-        public static TValue Select<TModel, TAction, TValue>(
+        public static TValue Select<TModel, TValue>(
            this IStore<TModel> store,
            Func<TModel, TValue> selector)
         {
