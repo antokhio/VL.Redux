@@ -2,7 +2,7 @@
 using System.Reactive.Subjects;
 using VL.Core.Import;
 
-namespace VL.Redux.Nodes
+namespace VL.Redux
 {
     [ProcessNode(Name = "Select (Reactive)")]
     public sealed class SelectorNode<TValue> :

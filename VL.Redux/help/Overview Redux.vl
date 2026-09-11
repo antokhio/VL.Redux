@@ -168,9 +168,8 @@
             </p:ValueBoxSettings>
           </Pad>
           <Node Bounds="102,230,37,19" Id="Ebe8qQj1eHTMi26pcRIMqG">
-            <p:NodeReference LastCategoryFullName="Redux.Nodes" LastDependency="VL.Redux.vl">
+            <p:NodeReference LastCategoryFullName="Redux" LastDependency="VL.Redux.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Nodes" NeedsToBeDirectParent="true" />
               <Choice Kind="ProcessAppFlag" Name="Slice" />
             </p:NodeReference>
             <Pin Id="AR1aLuqHsVeMWPKnbIYMmh" Name="Initial State" Kind="InputPin" />
@@ -367,9 +366,8 @@
             </p:ValueBoxSettings>
           </Pad>
           <Node Bounds="827,600,109,88" Id="GVuAKIIFCWQQRExiqVBNDm">
-            <p:NodeReference LastCategoryFullName="Redux.Nodes" LastDependency="VL.Redux.vl">
+            <p:NodeReference LastCategoryFullName="Redux" LastDependency="VL.Redux.vl">
               <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
-              <FullNameCategoryReference ID="Redux.Nodes" />
               <Choice Kind="ProcessAppFlag" Name="Select (Reactive)" />
             </p:NodeReference>
             <Pin Id="S15DIDrrC48N6TukhYNY8N" Name="Store" Kind="InputPin" />
