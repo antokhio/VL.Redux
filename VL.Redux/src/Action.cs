@@ -1,9 +1,6 @@
 ﻿namespace VL.Redux
 {
-    public interface IAction
-    {
-
-    }
+    public interface IAction { }
 
     public interface ISliceAction : IAction
     {
@@ -17,8 +14,7 @@
 
         public SliceAction(Func<TModel, TModel> action)
         {
-            _action = action
-                ?? throw new ArgumentNullException(nameof(action));
+            _action = action ?? throw new ArgumentNullException(nameof(action));
         }
 
         public State Apply(State state)
@@ -33,11 +29,11 @@
             if (nextModel is null)
             {
                 throw new InvalidOperationException(
-                    $"An update for {typeof(TModel).Name} returned null.");
+                    $"An update for {typeof(TModel).Name} returned null."
+                );
             }
 
             return state.With(typeof(TModel), nextModel);
         }
     }
-
 }

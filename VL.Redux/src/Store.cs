@@ -12,10 +12,10 @@ namespace VL.Redux
             where TModel : class;
     }
 
-    public interface IStore<TModel> : IStore, IObservable<TModel>
+    public interface IStore<TStore> : IStore, IObservable<TStore>
     {
-        public IObservable<TModel> State { get; }
-        public TModel Current { get; }
+        public IObservable<TStore> State { get; }
+        public TStore Current { get; }
     }
 
     public class Store<TStore> : IStore<TStore>

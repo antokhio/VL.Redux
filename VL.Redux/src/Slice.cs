@@ -13,7 +13,7 @@ namespace VL.Redux
     }
 
     public interface ISlice<TModel> : ISlice
-      where TModel : class
+        where TModel : class
     {
         TModel InitialState { get; }
 
@@ -21,18 +21,16 @@ namespace VL.Redux
     }
 
     public abstract class Slice<TModel> : ISlice<TModel>
-       where TModel : class
+        where TModel : class
     {
         public abstract TModel InitialState { get; }
 
-        public virtual TModel Reduce(TModel state, IAction action)
-            => state;
+        public virtual TModel Reduce(TModel state, IAction action) => state;
 
         Type ISlice.ModelType => typeof(TModel);
 
         object ISlice.InitialModel => InitialState;
 
-        object ISlice.Reduce(object model, IAction action)
-            => Reduce((TModel)model, action);
+        object ISlice.Reduce(object model, IAction action) => Reduce((TModel)model, action);
     }
 }

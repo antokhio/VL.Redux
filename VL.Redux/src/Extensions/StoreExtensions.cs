@@ -7,8 +7,9 @@ namespace VL.Redux
     {
         [Name("Select (Stateless)")]
         public static TValue Select<TModel, TValue>(
-           this IStore<TModel> store,
-           Func<TModel, TValue> selector)
+            this IStore<TModel> store,
+            Func<TModel, TValue> selector
+        )
         {
             if (store is null)
                 throw new ArgumentNullException(nameof(store));
@@ -24,19 +25,26 @@ namespace VL.Redux
         }
 
         [Name("Select (Stateless Observable)")]
-        public static IObservable<TValue> Select<TModel, TValue>(this IStore<TModel> store,
+        public static IObservable<TValue> Select<TModel, TValue>(
+            this IStore<TModel> store,
             Func<TModel, TValue> selector,
-            IEqualityComparer<TValue>? comparer = null)
+            IEqualityComparer<TValue>? comparer = null
+        )
         {
             if (store is null)
                 throw new ArgumentNullException(nameof(store));
             if (selector is null)
                 throw new ArgumentNullException(nameof(selector));
 
-            return store.State
-                .Select(selector)
-                .DistinctUntilChanged(
-                    comparer ?? EqualityComparer<TValue>.Default);
+            return store
+                .State.Select(selector)
+                .DistinctUntilChanged(comparer ?? EqualityComparer<TValue>.Default);
         }
+
+        public static IObservable<TModel> OfType<TModel>(
+            this IStore<State> store,
+            IEqualityComparer<TModel>? comparer = null
+        )
+            where TModel : class => store.Select(state => state.OfType<TModel>(), comparer);
     }
 }

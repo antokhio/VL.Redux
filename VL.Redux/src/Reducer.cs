@@ -6,6 +6,7 @@ namespace VL.Redux
     {
         private readonly IReadOnlyList<ISlice> _slices;
         public State InitialState { get; }
+
         public Reducer(IReadOnlyList<ISlice> slices)
         {
             if (slices is null)
@@ -23,19 +24,19 @@ namespace VL.Redux
                 {
                     throw new ArgumentException(
                         "Slice registrations cannot contain null.",
-                        nameof(slices));
+                        nameof(slices)
+                    );
                 }
 
                 if (!registeredTypes.Add(slice.ModelType))
                 {
                     throw new ArgumentException(
                         $"A slice for {slice.ModelType.Name} is already registered.",
-                        nameof(slices));
+                        nameof(slices)
+                    );
                 }
 
-                initialState = initialState.With(
-                    slice.ModelType,
-                    slice.InitialModel);
+                initialState = initialState.With(slice.ModelType, slice.InitialModel);
             }
 
             InitialState = initialState;

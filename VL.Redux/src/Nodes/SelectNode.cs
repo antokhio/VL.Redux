@@ -5,15 +5,11 @@ using VL.Core.Import;
 namespace VL.Redux
 {
     [ProcessNode(Name = "Select (Reactive)")]
-    public sealed class SelectorNode<TValue> :
-        IObservable<TValue>,
-        IDisposable
+    public sealed class SelectorNode<TValue> : IObservable<TValue>, IDisposable
     {
-        private readonly Subject<IStore<State>>
-            _storeInputs = new();
+        private readonly Subject<IStore<State>> _storeInputs = new();
 
-        private readonly Subject<Func<State, TValue>>
-            _selectorInputs = new();
+        private readonly Subject<Func<State, TValue>> _selectorInputs = new();
 
         private readonly ReplaySubject<TValue> _result = new(1);
         private readonly IDisposable _subscription;
@@ -31,12 +27,8 @@ namespace VL.Redux
                 // Observe the current store's state stream.
                 .Select(store => store.State)
                 .Switch()
-
                 // Re-evaluate when state or selector changes.
-                .CombineLatest(
-                    _selectorInputs,
-                    (state, selector) => selector(state))
-
+                .CombineLatest(_selectorInputs, (state, selector) => selector(state))
                 .DistinctUntilChanged()
                 .Subscribe(_result);
         }
@@ -72,8 +64,7 @@ namespace VL.Redux
 
         public IObservable<TValue> Result { get; }
 
-        IDisposable IObservable<TValue>.Subscribe(
-            IObserver<TValue> observer)
+        IDisposable IObservable<TValue>.Subscribe(IObserver<TValue> observer)
         {
             ThrowIfDisposed();
             return _result.Subscribe(observer);
@@ -96,8 +87,7 @@ namespace VL.Redux
         {
             if (_disposed)
             {
-                throw new ObjectDisposedException(
-                    nameof(SelectorNode<TValue>));
+                throw new ObjectDisposedException(nameof(SelectorNode<TValue>));
             }
         }
     }

@@ -9,20 +9,21 @@ namespace VL.Redux
     public class StoreNode
     {
         private readonly IStore<State> _store;
+
         public StoreNode(
             [Pin(Visibility = PinVisibility.Hidden)] NodeContext nodeContext,
-            [Pin(PinGroupKind = PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<ISlice> slices)
+            [Pin(PinGroupKind = PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+                Spread<ISlice> slices
+        )
         {
             if (slices is null)
                 throw new ArgumentNullException(nameof(slices));
 
             var reducer = new Reducer(slices);
 
-            _store = new Store<State>(
-                reducer.InitialState,
-                reducer.Reduce);
+            _store = new Store<State>(reducer.InitialState, reducer.Reduce);
         }
-        public IStore<State> Output => _store;
 
+        public IStore<State> Output => _store;
     }
 }
