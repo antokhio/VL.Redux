@@ -32,3 +32,8 @@ Current limitations:
 - All slices must be known at application startup.
 - This is a minimal proof of concept without middleware, logging, or development tools.
 - State is not serializable by default.
+
+
+Notice: 
+
+This is not an `agnostic` redux implementation, but more of `Reactive` state management tool.

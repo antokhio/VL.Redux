@@ -356,7 +356,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="Ij4PPlxjrY3OANpjYzdbkE" Bounds="940,470,384,40" ShowValueBox="true" isIOBox="true" Value="Subscribing">
+          <Pad Id="Ij4PPlxjrY3OANpjYzdbkE" Bounds="940,470,384,40" ShowValueBox="true" isIOBox="true" Value="Selector">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -472,7 +472,11 @@
             <Pin Id="M2wcXSEbP2MQKIeNxj1wKS" Name="Value" Kind="OutputPin" />
             <Pin Id="FwG9Sw4NqjLM8L5Td8Y0rW" Name="On Data" Kind="OutputPin" />
           </Node>
-          <Pad Id="N2h4TkfnJdlMg31Egj5rUy" Comment="" Bounds="1139,840,190,132" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="N2h4TkfnJdlMg31Egj5rUy" Comment="" Bounds="1139,840,190,132" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Main" LastDependency="Overview Redux.vl">
+              <Choice Kind="TypeFlag" Name="CounterState" />
+            </p:TypeAnnotation>
+          </Pad>
           <Pad Id="EErRMuW2y1yPBjdBaxPCNz" Bounds="1414,542,292,38" ShowValueBox="true" isIOBox="true" Value="Directly">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
@@ -527,6 +531,88 @@
             </ControlPoint>
           </Node>
           <Pad Id="IfRAs5aH1uCPztAvNjnz2a" Comment="" Bounds="1519,781,190,132" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="1764,609,49,19" Id="SxADR3RFvHLMXDXmoqF7CP">
+            <p:NodeReference LastCategoryFullName="Redux.Nodes" LastDependency="VL.Redux.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <FullNameCategoryReference ID="Redux.Nodes" />
+              <Choice Kind="ProcessAppFlag" Name="OfType (Reactive)" />
+            </p:NodeReference>
+            <Pin Id="PFciqwO4EjeNYt1OZcZ1Ne" Name="Store" Kind="InputPin" />
+            <Pin Id="GJMcn71slFoMyOpGW3Ntca" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="1764,650,65,19" Id="RsLqRpjW4b3LendDVL9e9i">
+            <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <FullNameCategoryReference ID="Reactive" />
+              <Choice Kind="ProcessAppFlag" Name="HoldLatest" />
+            </p:NodeReference>
+            <Pin Id="PnlvmM1g3v7NgVPQDZUbWH" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VXiuxVvruiYNtNMicOaLbD" Name="Initial Result" Kind="InputPin" IsHidden="true" />
+            <Pin Id="M3n3oFRC7nNLctF1x2MjRm" Name="Async Notifications" Kind="InputPin" />
+            <Pin Id="SJ1MVr7nhm0OnTI4CrJgZB" Name="Reset" Kind="InputPin" />
+            <Pin Id="VNfDJNt48p6MUc5n4k6054" Name="Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="DONC4F1Kt6sNWPyUli6n9C" Name="Value" Kind="OutputPin" />
+            <Pin Id="Neaj09LTDqSNfK3jDqQREK" Name="On Data" Kind="OutputPin" />
+          </Node>
+          <Pad Id="UXJA8pzfWswLzhL9pzCYhI" Comment="" Bounds="1766,701,190,132" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Main" LastDependency="Overview Redux.vl">
+              <Choice Kind="TypeFlag" Name="CounterState" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="GF58cSeorJJLmcyM9jcWQw" Bounds="1775,537,384,40" ShowValueBox="true" isIOBox="true" Value="Without selector">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">18</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="2072,650,73,106" Id="SykXraXMkCrMfIcPFYv3Aq">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+              <Choice Kind="ProcessStatefulRegion" Name="Cache" />
+            </p:NodeReference>
+            <Pin Id="V3L208H5oOcNrU7sPtgETR" Name="Force" Kind="InputPin" />
+            <Pin Id="Hg8hXrQ5zelMjOuYtAxmR2" Name="Dispose Cached Outputs" Kind="InputPin" />
+            <Pin Id="BUBCeZxFiWoOfKwnPOjVVV" Name="Has Changed" Kind="OutputPin" />
+            <Patch Id="KhmEZHNEccGMzFhhUoAffE" ManuallySortedPins="true">
+              <Patch Id="ONlxErumTdqP3nLgMw0bnH" Name="Create" ManuallySortedPins="true" />
+              <Patch Id="Hou7a9kcRd9PYOtbKpzVSy" Name="Then" ManuallySortedPins="true" />
+              <Node Bounds="2084,680,49,26" Id="C1BX7L1VjydNTlRWQaLENO">
+                <p:NodeReference LastCategoryFullName="Redux.IStore" LastDependency="VL.Redux.vl">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <FullNameCategoryReference ID="Redux.IStore" />
+                  <Choice Kind="OperationCallFlag" Name="OfType (Stateless Observable)" />
+                </p:NodeReference>
+                <Pin Id="FeHf8X099FlOvnAvpSTzhD" Name="Input" Kind="StateInputPin" />
+                <Pin Id="PwO5hNBof5PNr5OwilVGPN" Name="Comparer" Kind="InputPin" />
+                <Pin Id="AwW6YQvYoOYNgioktXtIyL" Name="Result" Kind="OutputPin" />
+              </Node>
+            </Patch>
+            <ControlPoint Id="SMTmJNv8yLmPYwLUGryN5Q" Bounds="2086,656" Alignment="Top" />
+            <ControlPoint Id="UUWM3Yyqpx3NzrhTcdxf07" Bounds="2086,750" Alignment="Bottom" />
+          </Node>
+          <Node Bounds="2084,790,65,19" Id="HKLIFckaVPhNjOILjyOezA">
+            <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <FullNameCategoryReference ID="Reactive" />
+              <Choice Kind="ProcessAppFlag" Name="HoldLatest" />
+            </p:NodeReference>
+            <Pin Id="ANQ6jFYOg8SLvJcjCjMJMY" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="ToT8ecSmv4ONVGVwpbOQ8p" Name="Initial Result" Kind="InputPin" IsHidden="true" />
+            <Pin Id="OdaGiUZovydMyM7W9BBQXd" Name="Async Notifications" Kind="InputPin" />
+            <Pin Id="HspRzubv6jtOD9OqRlKU7d" Name="Reset" Kind="InputPin" />
+            <Pin Id="SdGVfLMHpylMSSZMuFV9mT" Name="Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="I8h0uldOhGXQETv6oEZYtS" Name="Value" Kind="OutputPin" />
+            <Pin Id="QTv1PmExt7NPr62MUUh9se" Name="On Data" Kind="OutputPin" />
+          </Node>
+          <Pad Id="JmD8IwPvol5OmR5UQuxg2w" Comment="" Bounds="2086,841,190,132" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Main" LastDependency="Overview Redux.vl">
+              <Choice Kind="TypeFlag" Name="CounterState" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="Uk21qOV2vTXLR26B805MPq" Name="Create" />
         <Patch Id="RIjjCld7xZgOpP9HW4BGry" Name="Update" />
@@ -579,6 +665,14 @@
         <Link Id="HOFtTfOHe45QdaJNINMjYg" Ids="BhU1MwTdQ60MRQ8OqgxOFr,POLHzBrJeJYPSZlmwWnvhk" />
         <Link Id="FzL5nPqCWg8NuPxOMx92n2" Ids="KpzbqZB3rqxMWktJipKGxe,PTqRf91bacAL01AXzNABBz" />
         <Link Id="MKoiQ4UkprWNT2sytLKqIY" Ids="PTqRf91bacAL01AXzNABBz,IfRAs5aH1uCPztAvNjnz2a" />
+        <Link Id="EVsl8Sxa7DgMJAhjojKI3O" Ids="F7OIfZju3hPLmeF61Av1dB,PFciqwO4EjeNYt1OZcZ1Ne" />
+        <Link Id="B6Fa0sOeiR2OYq0EE76V6B" Ids="GJMcn71slFoMyOpGW3Ntca,M3n3oFRC7nNLctF1x2MjRm" />
+        <Link Id="PgnJuHnv5qnLEc4hYFfHAz" Ids="DONC4F1Kt6sNWPyUli6n9C,UXJA8pzfWswLzhL9pzCYhI" />
+        <Link Id="EUFeXSYM9j4PYnrvMwylIq" Ids="F7OIfZju3hPLmeF61Av1dB,SMTmJNv8yLmPYwLUGryN5Q" />
+        <Link Id="RVR71yTEzHzPVrkhKlBOAI" Ids="SMTmJNv8yLmPYwLUGryN5Q,FeHf8X099FlOvnAvpSTzhD" />
+        <Link Id="L98rdsXFBLLLFvhcsakFun" Ids="AwW6YQvYoOYNgioktXtIyL,UUWM3Yyqpx3NzrhTcdxf07" />
+        <Link Id="CASLWkXI3f1LVK5IxPbQR8" Ids="I8h0uldOhGXQETv6oEZYtS,JmD8IwPvol5OmR5UQuxg2w" />
+        <Link Id="BuITcgYKUmYOAchtUcwOVR" Ids="UUWM3Yyqpx3NzrhTcdxf07,OdaGiUZovydMyM7W9BBQXd" />
       </Patch>
     </Node>
   </Patch>

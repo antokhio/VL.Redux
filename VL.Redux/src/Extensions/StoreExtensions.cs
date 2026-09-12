@@ -41,6 +41,7 @@ namespace VL.Redux
                 .DistinctUntilChanged(comparer ?? EqualityComparer<TValue>.Default);
         }
 
+        [Name("OfType (Stateless Observable)")]
         public static IObservable<TModel> OfType<TModel>(
             this IStore<State> store,
             IEqualityComparer<TModel>? comparer = null

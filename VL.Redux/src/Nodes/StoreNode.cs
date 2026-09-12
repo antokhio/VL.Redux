@@ -1,4 +1,5 @@
-﻿using VL.Core;
+﻿using Microsoft.Extensions.Logging;
+using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Model;
@@ -9,6 +10,7 @@ namespace VL.Redux
     public class StoreNode
     {
         private readonly IStore<State> _store;
+        private ILogger _looger;
 
         public StoreNode(
             [Pin(Visibility = PinVisibility.Hidden)] NodeContext nodeContext,
@@ -16,6 +18,8 @@ namespace VL.Redux
                 Spread<ISlice> slices
         )
         {
+            _looger = nodeContext.GetLogger();
+
             if (slices is null)
                 throw new ArgumentNullException(nameof(slices));
 

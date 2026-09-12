@@ -2,32 +2,27 @@
 using System.Reactive.Subjects;
 using VL.Core.Import;
 
-namespace VL.Redux
+namespace VL.Redux.Nodes
 {
-    [ProcessNode(Name = "Select (Reactive)")]
-    public sealed class SelectorNode<TValue> : IObservable<TValue>, IDisposable
+    [ProcessNode(Name = "OfType (Reactive)")]
+    public sealed class OfTypeNode<TModel> : IObservable<TModel>, IDisposable
+        where TModel : class
     {
         private readonly Subject<IStore<State>> _storeInputs = new();
-        private readonly Subject<Func<State, TValue>> _selectorInputs = new();
-        private readonly ReplaySubject<TValue> _result = new(1);
+        private readonly ReplaySubject<TModel> _result = new(1);
         private readonly IDisposable _subscription;
 
         private IStore<State>? _store;
-        private Func<State, TValue>? _selector;
         private bool _disposed;
 
-        public SelectorNode()
+        public OfTypeNode()
         {
             // Keep the output observable stable across frames.
             Result = _result.AsObservable();
 
             _subscription = _storeInputs
-                // Observe the current store's state stream.
-                .Select(store => store.State)
+                .Select(store => store.OfType<TModel>())
                 .Switch()
-                // Re-evaluate when state or selector changes.
-                .CombineLatest(_selectorInputs, (state, selector) => selector(state))
-                .DistinctUntilChanged()
                 .Subscribe(_result);
         }
 
@@ -46,23 +41,9 @@ namespace VL.Redux
             _storeInputs.OnNext(store);
         }
 
-        public void SetSelector(Func<State, TValue> selector)
-        {
-            ThrowIfDisposed();
+        public IObservable<TModel> Result { get; }
 
-            if (selector is null)
-                throw new ArgumentNullException(nameof(selector));
-
-            if (Equals(_selector, selector))
-                return;
-
-            _selector = selector;
-            _selectorInputs.OnNext(selector);
-        }
-
-        public IObservable<TValue> Result { get; }
-
-        IDisposable IObservable<TValue>.Subscribe(IObserver<TValue> observer)
+        IDisposable IObservable<TModel>.Subscribe(IObserver<TModel> observer)
         {
             ThrowIfDisposed();
             return _result.Subscribe(observer);
@@ -77,7 +58,6 @@ namespace VL.Redux
 
             _subscription.Dispose();
             _storeInputs.Dispose();
-            _selectorInputs.Dispose();
             _result.Dispose();
         }
 
@@ -85,7 +65,7 @@ namespace VL.Redux
         {
             if (_disposed)
             {
-                throw new ObjectDisposedException(nameof(SelectorNode<TValue>));
+                throw new ObjectDisposedException(nameof(OfTypeNode<TModel>));
             }
         }
     }
