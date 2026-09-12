@@ -2,6 +2,12 @@
 
 An experiment with an MVU approach for vvvv.
 
+### Installation
+```
+nuget install VL.Redux -pre
+```
+
+
 ![overview](assets/01-overview.png)
 
 The idea is to define state as slice records:
