@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+	<metadata>
+		<id>VL.Redux</id>
+		<title>VL.Redux</title>
+		<version>0.0.0</version>
+		<authors>antokhio</authors>
+		<owners>antokhio</owners>
+		<projectUrl>https://github.com/antokhio/VL.Redux</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<summary>Reactive state management for vvvv.</summary>
+		<description>Provides an experimental MVU-inspired state management system for vvvv with typed state slices, actions, and reactive subscriptions.</description>
+		<tags>vl, vvvv, redux, mvu, reactive, state-management</tags>
+		<readme>README.md</readme>
+		<license type="file">LICENSE</license>
+		<icon>assets\icon.png</icon>
+		<dependencies>
+			<group targetFramework="net8.0">
+				<dependency id="VL.Core" version="2025.7.4" />
+			</group>
+		</dependencies>
+	</metadata>
+  <files>
+    <file src="..\VL.Redux\lib\Release\net8.0\**" target="lib\net8.0\" />
+    <file src="..\VL.Redux\*.vl" target="" />
+    <file src="..\VL.Redux\help\**" target="help\" />
+    <file src="..\assets\**" target="assets\" />
+    <file src="..\README.md" />
+    <file src="..\LICENSE" />
+  </files>
+</package>
