@@ -10,7 +10,7 @@ namespace VL.Redux
     public class StoreNode
     {
         private readonly IStore<State> _store;
-        private ILogger _looger;
+        private readonly ILogger _logger;
 
         public StoreNode(
             [Pin(Visibility = PinVisibility.Hidden)] NodeContext nodeContext,
@@ -18,14 +18,22 @@ namespace VL.Redux
                 Spread<ISlice> slices
         )
         {
-            _looger = nodeContext.GetLogger();
+            _logger = nodeContext.GetLogger();
 
             if (slices is null)
                 throw new ArgumentNullException(nameof(slices));
 
             var reducer = new Reducer(slices);
 
-            _store = new Store<State>(reducer.InitialState, reducer.Reduce);
+            _store = new Store<State>(
+                reducer.InitialState,
+                (state, action) =>
+                {
+                    var nextState = reducer.Reduce(state, action);
+                    _logger.LogInformation("Dispatched action {ActionType}", action.GetType());
+                    return nextState;
+                }
+            );
         }
 
         public IStore<State> Output => _store;
